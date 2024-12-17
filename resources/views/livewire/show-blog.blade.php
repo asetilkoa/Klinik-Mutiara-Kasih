@@ -5,9 +5,9 @@
                 <div class="col-8 mx-auto text-center">
                     <h2 class="mb-3 text-capitalize">Blog</h2>
                     <ul class="list-inline breadcrumbs text-capitalize" style="font-weight:500">
-                        <li class="list-inline-item"><a href="index.html">Home</a>
+                        <li class="list-inline-item"><a href="{{route('home')}}">Home</a>
                         </li>
-                        <li class="list-inline-item">/ &nbsp; <a href="blog.html">Blog</a>
+                        <li class="list-inline-item">/ &nbsp; Blog
                         </li>
                     </ul>
                 </div>
@@ -51,8 +51,8 @@
                                     </div>
                                     <div class="pt-4">
                                         <p class="mb-3">{{\Carbon\Carbon::parse($article->created_at)->format('d M, Y')}}</p>
-                                        <h2 class="h4"><a class="text-black" href="blog-details.html">{{$article->title}}</a></h2>
-                                        <p>Heading example Here is example of hedings. You can use this heading by following …</p> <a href="blog-details.html" class="text-primary fw-bold" aria-label="Read the full article by clicking here">Read More</a>
+                                        <h2 class="h4"><a class="text-black" wire:navigate href="{{route('blogDetail', $article->id)}}">{{$article->title}}</a></h2>
+                                        <a wire:navigate href="{{route('blogDetail', $article->id)}}" class="text-primary fw-bold" aria-label="Read the full article by clicking here">Read More</a>
                                     </div>
                                 </article>
                             </div>
@@ -71,30 +71,10 @@
                         <ul class="list-unstyled widget-list">
                             @if ($categories->isNotEmpty())
                             @foreach ($categories as $category)
-                            <li><a wire:navigate href="{{route('blog').'?category='.$category->slug}}">{{$category->name}}</small></a>
+                            <li><a wire:navigate href="{{route('blog').'?categorySlug='.$category->slug}}">{{$category->name}}</small></a>
                             </li>
                             @endforeach
                             @endif
-                        </ul>
-                    </div>
-                    <!-- tags -->
-                    <div class="widget widget-tags">
-                        <h4 class="widget-title"><span>Tags</span></h4>
-                        <ul class="list-inline widget-list widget-list-inline taxonomies-list">
-                            <li class="list-inline-item"><a href="#!">Booth</a>
-                            </li>
-                            <li class="list-inline-item"><a href="#!">City</a>
-                            </li>
-                            <li class="list-inline-item"><a href="#!">Image</a>
-                            </li>
-                            <li class="list-inline-item"><a href="#!">New</a>
-                            </li>
-                            <li class="list-inline-item"><a href="#!">Photo</a>
-                            </li>
-                            <li class="list-inline-item"><a href="#!">Seasone</a>
-                            </li>
-                            <li class="list-inline-item"><a href="#!">Video</a>
-                            </li>
                         </ul>
                     </div>
                     <!-- latest post -->
@@ -105,7 +85,7 @@
                         @foreach ($latestArticles as $latestArticle)
                         <ul class="list-unstyled widget-list">
                             <li class="d-flex widget-post align-items-center">
-                                <a class="text-black" href="/blog/elements/">
+                                <a class="text-black" wire:navigate href="{{route('blogDetail', $latestArticle->id)}}">
                                     <div class="widget-post-image flex-shrink-0 me-3">
                                         @if ($article->image != "")
                                         <img loading="lazy" decoding="async" src="{{asset('storage/'.$latestArticle->image)}}" alt="Post Thumbnail">
@@ -113,7 +93,7 @@
                                     </div>
                                 </a>
                                 <div class="flex-grow-1">
-                                    <h5 class="h6 mb-0"><a class="text-black" href="blog-details.html">{{$latestArticle->title}}</a></h5>
+                                    <h5 class="h6 mb-0"><a class="text-black" wire:navigate href="{{route('blogDetail', $latestArticle->id)}}">{{$latestArticle->title}}</a></h5>
                                     <small>{{\Carbon\Carbon::parse($article->created_at)->format('d M, Y')}}</small>
                                 </div>
                             </li>
@@ -121,8 +101,6 @@
                         @endforeach
                         @endif
                     </div>
-                    <!-- Social -->
-
                 </div>
             </div>
         </div>

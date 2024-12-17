@@ -3,13 +3,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-8 mx-auto text-center">
-                    <h2 class="mb-3 text-capitalize">{{$service->title}}</h2>
+                    <h2 class="mb-3 text-capitalize">{{$page->title}}</h2>
                     <ul class="list-inline breadcrumbs text-capitalize" style="font-weight:500">
-                        <li class="list-inline-item"><a wire:navigate href="{{route ('home')}}">Home</a>
+                        <li class="list-inline-item"><a wire:navigate href="{{route('home')}}">Home</a>
                         </li>
-                        <li class="list-inline-item">/ &nbsp; <a wire:navigate href="{{route ('layananPages')}}">Layanan</a>
-                        </li>
-                        <li class="list-inline-item">/ &nbsp;{{$service->title}}
+                        <li class="list-inline-item">/ &nbsp; {{$page->title}}
                         </li>
                     </ul>
                 </div>
@@ -36,15 +34,25 @@
         </div>
     </section>
 
-    <section class="section-sm py-5">
+    <section class="section py-5" style="text-align: justify;">
         <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-12">
-                    <div class="content" style="text-align: justify;">
-                        {!! $service->description !!}
+            @if ($page->image != "")
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-7">
+                    <div class="section-title" style="text-align: justify;">
+                        {!!$page->content!!}
                     </div>
                 </div>
             </div>
+            @else
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-7">
+                    <div class="section-title">
+                    {!!$page->content!!}
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
     </section>
 </main>
