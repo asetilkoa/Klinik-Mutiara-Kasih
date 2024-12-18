@@ -19,7 +19,7 @@
                         @foreach ($faqs as $faq)
                         <div class="accordion-item">
                             <h2 class="accordion-header accordion-button h5 border-0"
-                                id="heading-ebd23e34fd2ed58299b32c03c521feb0b02f19d9" type="button" data-bs-toggle="collapse"
+                                id="heading-{{$x}}" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse-{{$x}}" aria-expanded="true"
                                 aria-controls="collapse-{{$x}}">
                                 {{$faq->question}}

@@ -1,9 +1,12 @@
 <?php
 
 use App\Livewire\BlogDetail;
+use App\Livewire\KarirDetail;
 use App\Livewire\ShowBlog;
+use App\Livewire\ShowContactPage;
 use App\Livewire\ShowFaqPage;
 use App\Livewire\ShowHome;
+use App\Livewire\ShowKarir;
 use App\Livewire\ShowMedisPage;
 use App\Livewire\ShowPage;
 use App\Livewire\ShowService;
@@ -22,3 +25,6 @@ Route::get('/blog', ShowBlog::class)->name('blog');
 Route::get('/blog/{id}', BlogDetail::class)->name('blogDetail');
 Route::get('/faq', ShowFaqPage::class)->name('faqs');
 Route::get('/page/{id}', ShowPage::class)->name('page');
+Route::get('/contact', ShowContactPage::class)->name('contact');
+Route::get('/karir', ShowKarir::class)->name('karir');
+Route::get('/karir/{id}', KarirDetail::class)->name('karirDetail');

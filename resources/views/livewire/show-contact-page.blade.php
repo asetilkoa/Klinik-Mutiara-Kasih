@@ -3,11 +3,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-8 mx-auto text-center">
-                    <h2 class="mb-3 text-capitalize">Blog</h2>
+                    <h2 class="mb-3 text-capitalize">Hubungi Kami</h2>
                     <ul class="list-inline breadcrumbs text-capitalize" style="font-weight:500">
-                        <li class="list-inline-item"><a wire:navigate href="{{route('home')}}">Home</a>
+                        <li class="list-inline-item"><a href="{{route('home')}}">Home</a>
                         </li>
-                        <li class="list-inline-item">/ &nbsp; Blog
+                        <li class="list-inline-item">/ &nbsp; Contact
                         </li>
                     </ul>
                 </div>
@@ -36,70 +36,78 @@
 
     <section class="section py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    <div class="me-lg-4">
-                        <div class="row gy-5">
-                            @if ($articles->isNotEmpty())
-                            @foreach ( $articles as $article)
-                            <div class="col-md-6" data-aos="fade">
-                                <article class="blog-post">
-                                    <div class="post-slider slider-sm rounded">
-                                        @if ($article->image != "")
-                                        <img loading="lazy" decoding="async" src="{{asset('storage/'.$article->image)}}" alt="Post Thumbnail">
-                                        @endif
-                                    </div>
-                                    <div class="pt-4">
-                                        <p class="mb-3">{{\Carbon\Carbon::parse($article->created_at)->format('d M, Y')}}</p>
-                                        <h2 class="h4"><a class="text-black" wire:navigate href="{{route('blogDetail', $article->id)}}">{{$article->title}}</a></h2>
-                                        <a wire:navigate href="{{route('blogDetail', $article->id)}}" class="text-primary fw-bold" aria-label="Read the full article by clicking here">Read More</a>
-                                    </div>
-                                </article>
-                            </div>
-                            @endforeach
-                            @endif
-                            <div class="col-12">
-                                {{$articles->links()}}
-                            </div>
-                        </div>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center">
+                        <p class="text-primary text-uppercase fw-bold mb-3">Hubungi Kami</p>
+                        <h1>Mari Terhubung Dengan Kami!</h1>
+                        <p>Lorem ipsum dolor sit, consectetur adipiscing . egestas cursus pellentesque dignissim dui, congue etiam</p>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <!-- categories -->
-                    <div class="widget widget-categories">
-                        <h5 class="widget-title"><span>Category</span></h5>
-                        <ul class="list-unstyled widget-list">
-                            @if ($categories->isNotEmpty())
-                            @foreach ($categories as $category)
-                            <li><a wire:navigate href="{{route('blog').'?categorySlug='.$category->slug}}">{{$category->name}}</small></a>
-                            </li>
-                            @endforeach
-                            @endif
-                        </ul>
-                    </div>
-                    <!-- latest post -->
-                    <div class="widget">
-                        <h5 class="widget-title"><span>Latest Article</span></h5>
-                        <!-- post-item -->
-                        @if ($latestArticles->isNotEmpty())
-                        @foreach ($latestArticles as $latestArticle)
-                        <ul class="list-unstyled widget-list">
-                            <li class="d-flex widget-post align-items-center">
-                                <a class="text-black" wire:navigate href="{{route('blogDetail', $latestArticle->id)}}">
-                                    <div class="widget-post-image flex-shrink-0 me-3">
-                                        @if ($article->image != "")
-                                        <img loading="lazy" decoding="async" src="{{asset('storage/'.$latestArticle->image)}}" alt="Post Thumbnail">
-                                        @endif
-                                    </div>
-                                </a>
-                                <div class="flex-grow-1">
-                                    <h5 class="h6 mb-0"><a class="text-black" wire:navigate href="{{route('blogDetail', $latestArticle->id)}}">{{$latestArticle->title}}</a></h5>
-                                    <small>{{\Carbon\Carbon::parse($article->created_at)->format('d M, Y')}}</small>
+                <div class="col-lg-10">
+                    <div class="shadow rounded p-5 bg-white">
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <h4>Hubungi Kami</h4>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="contact-form">
+                                    <form wire:submit="submit">
+                                        <div class="form-group mb-4 pb-2">
+                                            <label for="exampleFormControlInput1" class="form-label">Nama Lengkap</label>
+                                            <input wire:model="name" type="text" class="form-control shadow-none @error('name') is-invalid @enderror" id="name" name="name">
+                                            @error('name')
+                                            <p class="invalid-feedback">{{$message}}</p>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mb-4 pb-2">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input wire:model="email" type="email" class="form-control shadow-none @error('email') is-invalid @enderror" id="email" name="email">
+                                            @error('email')
+                                            <p class="invalid-feedback">{{$message}}</p>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mb-4 pb-2">
+                                            <label for="message" class="form-label">Pesan</label>
+                                            <textarea wire:model="message" class="form-control shadow-none @error('message') is-invalid @enderror" id="message" name="message" rows="3"></textarea>
+                                            @error('message')
+                                            <p class="invalid-feedback">{{$message}}</p>
+                                            @enderror
+                                        </div>
+                                        <button class="btn btn-primary w-100" type="submit">Send Message</button>
+                                    </form>
                                 </div>
-                            </li>
-                        </ul>
-                        @endforeach
-                        @endif
+                            </div>
+                            <div class="col-lg-6 mt-5 mt-lg-0">
+                                <div class="contact-info">
+                                    <div class="block mt-0">
+                                        <h4 class="h5">Masih mempunyai pertanyan?</h4>
+                                        <div class="content">Telepon kami via WhatsApp
+                                            <br> <a href="https://api.whatsapp.com/send/?phone=%2B628122585618&text&type=phone_number&app_absent=0" target="_blank">+628122585618</a>
+                                            <br>Senin - Minggu
+                                            <br>24 Jam
+                                        </div>
+                                    </div>
+                                    <div class="block mt-4">
+                                        <h4 class="h5">Klinik Mutiara Kasih</h4>
+                                        <div class="content">Jl Mayjend Soetoyo No.17
+                                            <br>Kasepuhan
+                                            <br>Batang
+                                        </div>
+                                    </div>
+                                    <div class="block">
+                                        <ul class="list-unstyled list-inline my-4 social-icons">
+                                            <li class="list-inline-item me-3"><a title="Explorer Facebook Profile" class="text-black" href="https://facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                            </li>
+                                            <li class="list-inline-item me-3"><a title="Explorer Twitter Profile" class="text-black" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                                            </li>
+                                            <li class="list-inline-item me-3"><a title="Explorer Instagram Profile" class="text-black" href="https://instagram.com/klinikmutiarakasih.btg" target="_blank"><i class="fab fa-instagram"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -6,16 +6,45 @@
                     <div class="block text-center text-lg-start pe-0 pe-xl-5">
                         <h1 class="text-capitalize mb-4">Klinik Pratama Rawat Inap Mutiara Kasih</h1>
                         <p class="mb-4" style="text-align: justify;">Klinik Pratama Rawat Inap Mutiara Kasih adalah sebuah fasilitas layanan kesehatan yang berada di Jl. Mayjend Soetoyo No. 17, Batang, Jawa Tengah. Klinik ini termasuk dalam kategori klinik pratama, yang biasanya menyediakan layanan kesehatan dasar dan rawat inap bagi masyarakat.</p> <a type="button"
-                            class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#applyLoan">Tentang Kami<span style="font-size: 14px;" class="ms-2 fas fa-arrow-right"></span></a>
+                            class="btn btn-primary" wire:navigate href="{{route('page',1)}}" data-bs-toggle="modal" data-bs-target="#applyLoan">Tentang Kami<span style="font-size: 14px;" class="ms-2 fas fa-arrow-right"></span></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="ps-lg-5 text-center">
-                        <img loading="lazy" decoding="async"
-                            src="{{asset('front/images/home.png')}}"
-                            alt="banner image" class="w-100">
+                        <div id="imageSlider" class="carousel slide" data-bs-ride="carousel">
+                            <!-- Indicators -->
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+
+                            <!-- Slides -->
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img loading="lazy" decoding="async" src="{{asset('front/images/ALF04263.jpg')}}" alt="Banner Image 1" class="w-100">
+                                </div>
+                                <div class="carousel-item">
+                                    <img loading="lazy" decoding="async" src="{{asset('front/images/ALF04258.jpg')}}" alt="Banner Image 2" class="w-100">
+                                </div>
+                                <div class="carousel-item">
+                                    <img loading="lazy" decoding="async" src="{{asset('front/images/ALF04286.jpg')}}" alt="Banner Image 3" class="w-100">
+                                </div>
+                            </div>
+
+                            <!-- Controls -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#imageSlider" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#imageSlider" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="has-shapes">
